@@ -1,0 +1,9 @@
+*.creator
+*.creator.user
+*.files
+*.includes
+*.config
+obj/
+clank
+
+.ycm*
