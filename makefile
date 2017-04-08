@@ -36,4 +36,4 @@ $(NAME): $(OBJECTS)
 
 clean:
 	@echo "** Removing object files and executable..."
-	rm -f $(NAME) *.o
+	rm -f $(NAME) $(OBJECTS)

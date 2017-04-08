@@ -9,7 +9,7 @@ void PrintHelp(const char *invokation)
 	printf("\n");
 	printf("Options:\n");
 
-	printf("  -p:\n");
+	printf("  -d:\n");
 	printf("  Print all available devices.\n");
 }
 
@@ -18,6 +18,7 @@ void PrintDevices()
 	std::vector<Clank::Device::Ptr> devs = Clank::Device::GetAllDevices();
 	for (auto d : devs) {
 		printf("Device:     %s\n", d->GetDeviceName().c_str());
+		printf("Type:       %s\n", d->GetTypeString().c_str());
 		printf("Vendor:     %s\n", d->GetVendorName().c_str());
 		printf("CLVersion:  %s\n", d->GetOpenCLVersion().c_str());
 		printf("Profile:    %s\n", d->GetDeviceProfile().c_str());

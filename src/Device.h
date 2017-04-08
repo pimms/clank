@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Internal.h"
 #include <vector>
 #include <memory>
@@ -30,6 +32,7 @@ public:
 	// wrap this nicely for you.
 	static std::vector<cl::Device> GetAllNativeHandles(Type=ANY);
 
+	// Don't use directly - use the static factory methods.
 	Device(cl::Device nativeHandle);
 	~Device();
 
@@ -38,6 +41,8 @@ public:
 	std::string GetDeviceProfile() const;
 	std::string GetOpenCLVersion() const;
 	std::string GetExtensions() const;
+	Type GetType() const;
+	std::string GetTypeString() const;
 
 	cl::Device& GetNativeHandle();
 
@@ -49,6 +54,7 @@ private:
 	std::string _deviceProfile;
 	std::string _clVersion;
 	std::string _extensions;
+	Type _type;
 };
 
 }

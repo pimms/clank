@@ -67,6 +67,21 @@ Device::Device(cl::Device nativeHandle):
 	_handle.getInfo(CL_DEVICE_PROFILE, &_deviceProfile);
 	_handle.getInfo(CL_DEVICE_OPENCL_C_VERSION, &_clVersion);
 	_handle.getInfo(CL_DEVICE_EXTENSIONS, &_extensions);
+
+	cl_device_type type;
+	_handle.getInfo(CL_DEVICE_TYPE, &type);
+	switch (type) {
+		case CL_DEVICE_TYPE_CPU:
+			_type = Type::CPU;
+			break;
+		case CL_DEVICE_TYPE_GPU:
+			_type = Type::GPU;
+			break;
+		default:
+			_type = Type::ANY;
+			THROW("Unsupported OpenCL device type: %d", (int)type);
+			break;
+	}
 }
 
 Device::~Device()
@@ -97,6 +112,25 @@ std::string Device::GetOpenCLVersion() const
 std::string Device::GetExtensions() const
 {
 	return _extensions;
+}
+
+Device::Type Device::GetType() const
+{
+	return _type;
+}
+
+std::string Device::GetTypeString() const
+{
+	switch (_type) {
+		case CPU:
+			return "CPU";
+		case GPU:
+			return "GPU";
+		case ANY:
+			return "ANY";
+	}
+
+	return "UNDEFINED";
 }
 
 cl::Device& Device::GetNativeHandle()

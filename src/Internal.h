@@ -1,8 +1,13 @@
 #pragma once
 
 #ifdef __APPLE__
-
-	#include <OpenCL/cl.h>
+	// I can't find the CL header to save my life, so I'm just
+	// bringing my own header. Oh well.
+	#ifdef YOU_COMPLETE_ME
+		#include "macos/cl.h"
+	#else
+		#include <OpenCL/OpenCL.h>
+	#endif
 
 	// Apple doesn't ship the C++ wrapper header by default,
 	// so we need to supply our own. This one is nacked directly
