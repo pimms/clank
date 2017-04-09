@@ -32,6 +32,7 @@ namespace Internal
 {
 
 void Throw(const char *file, const char *func, int line, const char *msg, ...);
+void Throw(cl_int err, const char *file, const char *func, int line, const char *msg, ...);
 
 }
 }
@@ -39,4 +40,6 @@ void Throw(const char *file, const char *func, int line, const char *msg, ...);
 
 #define THROW(MSG...) \
 	Clank::Internal::Throw(__FILE__, __PRETTY_FUNCTION__, __LINE__, MSG)
+
+#define ERRTHROW(err, MSG...) \
 

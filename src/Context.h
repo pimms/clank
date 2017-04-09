@@ -22,6 +22,7 @@ public:
 	CommandQueue::Ptr GetCommandQueue() const;
 
 	cl::Context& GetNativeHandle();
+	const cl::Context& GetNativeHandle() const;
 
 private:
 	Device::Ptr _device;

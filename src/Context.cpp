@@ -34,4 +34,9 @@ cl::Context& Context::GetNativeHandle()
 	return *_context;
 }
 
+const cl::Context& Context::GetNativeHandle() const
+{
+    return *_context;
+}
+
 }
